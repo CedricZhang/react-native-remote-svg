@@ -6,19 +6,20 @@ import { View, WebView } from 'react-native';
 const firstHtml =
   `<html>
     <head>
+      
       <style>
         html, body 
         { margin:0; padding:0; overflow:hidden; background-color: transparent; } 
         svg { position:relative !important; top:0; left:0; height:100%; width:100%; }
       </style>
     </head>
-    <body><div style="width:100%; background-color:transparent">`;
+    <body><div style="width:100%; background-color:#77ffff00">`;
 const lastHtml = '</div></body></html>';
 
 class SvgImage extends Component {
   state = { fetchingUrl: null, svgContent: null, svgUrl:null };
   componentDidMount() {
-    // this.doFetch(this.props);
+    //this.doFetch(this.props);
     this.setState({
       svgUrl:this.props.source && this.props.source.uri
     })
@@ -50,13 +51,13 @@ class SvgImage extends Component {
   };
   render() {
     const props = this.props;
-    const { svgContent } = this.state;
+    const { svgContent,svgUrl } = this.state;
 
     // let html = `${firstHtml}${svgContent}${lastHtml}`
     let html = `${firstHtml}<img src="${this.state.svgUrl}" style="width:100%; ">${lastHtml}`
-
+    // console.log(html)
     // console.log("HTML", html)
-    if (svgContent) {
+    if (svgUrl) {
       return (
         <View pointerEvents="none" style={[props.style, props.containerStyle]}>
           <WebView
@@ -67,6 +68,7 @@ class SvgImage extends Component {
                 width: 200,
                 height: 100,
                 backgroundColor: 'transparent',
+                // backgroundColor: '#66ccff',
               },
               props.style,
             ]}
