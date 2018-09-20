@@ -149,10 +149,12 @@ class SvgImage extends Component {
     
     function hideLoading(){
       document.getElementById("loading").style.display = 'none';
+      document.getElementById("image").style.display = 'block';
       
     }
 
     document.getElementById("image").onload=hideLoading;
+    document.getElementById("image").style.display = 'none';
     document.getElementById("image").src="${svgUrl}";
     
 
