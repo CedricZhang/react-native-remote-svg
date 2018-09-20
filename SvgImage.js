@@ -24,7 +24,7 @@ class SvgImage extends Component {
     })
   }
   componentWillReceiveProps(nextProps) {
-    this.doFetch(nextProps);
+    //this.doFetch(nextProps);
     this.setState({
       svgUrl:nextProps.source && nextProps.source.uri
     })
